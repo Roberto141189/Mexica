@@ -1,0 +1,8 @@
+﻿@{ Layout = null; }
+
+<option value=""></option>
+
+@foreach (var item in ViewBag.listaTNegocio)
+{
+    <option value="@item.idNegocio">@item.nombre</option>
+}

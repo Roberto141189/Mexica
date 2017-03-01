@@ -1,0 +1,15 @@
+﻿@{ Layout = null; }
+
+@foreach (var item in ViewBag.listaTNegocio)
+{
+    <tr>
+        <td>@item.parentBanco.nombre</td>
+        <td>@item.nombre</td>
+        <td>@item.fechaRegistro</td>
+        <td>@item.fechaModificacion</td>
+        <td>@(item.estatus ? "Activo" : "Inactivo")</td>
+        <td>
+            <input type="button" value="Modificar" />
+        </td>
+    </tr>
+}

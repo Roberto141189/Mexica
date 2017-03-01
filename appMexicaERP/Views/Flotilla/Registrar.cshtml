@@ -1,0 +1,163 @@
+﻿@{
+    ViewBag.Title = "Registrar";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- begin panel -->
+            <div class="panel panel-inverse" data-sortable-id="form-stuff-1">
+                <div class="panel-heading">
+                    <div class="panel-heading-btn">
+                        <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                        <a href="@Url.Action("Consulta", "Flotilla")" class="btn btn-xs btn-icon btn-circle btn-success"><i class="fa fa-repeat"></i></a>
+                    </div>
+                    <h4 class="panel-title">Registro de Unidades Vehiculares</h4>
+                </div>
+                <div class="alert alert-warning fade in">
+                    <button type="button" class="close" data-dismiss="alert">
+                        @*<span aria-hidden="true">&times;</span>*@
+                    </button>
+                    Padrón vehicular de Mexica Tours, en la cual se registran todas la unidades pertenecientes a la empresa y se registran todos los datos generales de la unidad
+                </div>
+                <div class="panel-body">
+                    <form action="@Url.Action("Registrar", "Flotilla")" class="form-horizontal" method="post">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1" style="font:bold;">Marca</label>
+                                <select class="form-control" id="selectIdMarca" name="selectIdMarca">
+                                    <option value="0">-</option>
+                                    @foreach (var item in ViewBag.listaMarcas)
+                                    {
+                                        <option value="@item.idMarca">@item.descripcion</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">Modelo</label>
+                                <input type="text" id="selectmodelo" name="selectmodelo" class="form-control" placeholder="Año" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Tipo</label>
+                                <input type="text" id="txttipo" name="txttipo" class="form-control" placeholder="Crafter,Hiace,etc" required />
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">N° Serie</label>
+                                <input type="text" id="txtserie" name="txtserie" class="form-control" placeholder="" required />
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Combustible</label>
+                                <select class="form-control" id="selectidCombustible" name="selectidCombustible">
+                                    <option value="0">-</option>
+                                    @foreach (var item in ViewBag.listaCombustible)
+                                    {
+                                        <option value="@item.idCombustible">@item.descripcion</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">Cap. Litros</label>
+                                <input type="text" id="txtlitros" name="txtlitros" class="form-control" placeholder="Litros" required />
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">N° Pasajeros</label>
+                                <input type="text" id="txtcapacidad" name="txtcapacidad" class="form-control" placeholder="10,25" required />
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Numero de Placas</label>
+                                <input type="text" id="txtplacas" name="txtplacas" class="form-control" placeholder="" required />
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Numero Economico</label>
+                                <input type="text" id="txtnumEconomico" name="txtnumEconomico" class="form-control" placeholder="MT0001" required />
+                            </div>
+
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">Kilometraje</label>
+                                <input type="text" id="txtkilometraje" name="txtkilometraje" class="form-control" placeholder="Kilometraje actual" required />
+                            </div>
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Aseguradora</label>
+                                <input type="text" id="txtciaSeguro" name="txtciaSeguro" class="form-control" placeholder="" required />
+                            </div>
+
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Inicia Seguro</label>
+                                <div class="input-group date" id="vigenciaIniciaSeguro">
+                                    <input type="text" id="dateIniciaVegenciaSeguro" name="dateIniciaVegenciaSeguro" class="form-control" placeholder="Select Date" />
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Fin Seguro</label>
+                                <div class="input-group date" id="vigenciaFinSeguro">
+                                    <input type="text" id="dateFinVigenciaSeguro" name="dateFinVigenciaSeguro" class="form-control" placeholder="Select Date" />
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Operador Asignado</label>
+                                <select class="form-control" id="selectOperador" name="selectOperador">
+                                    @foreach (var item in ViewBag.listaEmpleados)
+                                    {
+                                        <option value="@item.idEmpleado">@item.nombre</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label for="exampleInputEmail1">Empresa Asginada</label>
+                                <select class="form-control" id="selectIdEmpleado" name="selectIdEmpleado">
+                                    @foreach (var item in ViewBag.listaEmpresas)
+                                    {
+                                        <option value="@item.idEmpresa">@item.descripcion</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <label for="exampleInputEmail1">Ult. servicio</label>
+                                <div class="input-group date" id="ultimoServicio">
+                                    <input type="text" class="form-control" id="dateUltimoServicio" name="dateUltimoServicio" placeholder="Select Date" />
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <label for="exampleInputEmail1">Tanque</label>
+                                <select class="form-control" id="selecttanque" name="selecttanque">
+                                    <option value="0">-</option>
+                                    <option value="1">0</option>
+                                    <option value="2">1/4</option>
+                                    <option value="3">1/2</option>
+                                    <option value="4">3/4</option>
+                                    <option value="5">Full</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="exampleInputEmail1">Observaciones</label>
+                                <input type="text" id="txtobservaciones" name="txtobservaciones" class="form-control" placeholder="Observaciones generales" required />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <br /><br />
+                            <div class="form-group col-md-12">
+                                <div class="col-md-12" align="center">
+                                    <button style="width:10%;" type="submit" class="btn btn-sm btn-success">Insertar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- end panel -->
+</div>
